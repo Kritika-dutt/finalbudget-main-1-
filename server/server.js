@@ -9,6 +9,7 @@ var budget = require('./Kritika.json');
 const db = require('./mysql.js');
 const jwtHelper = require('./jwt/jwt.js');
 const errorHandler = require('./jwt/error-handling.js');
+const port= process.env.PORT  || 8000;
 
 
 app.use(cors());
@@ -78,3 +79,7 @@ app.use("/", router);
 db.fetchUserInfo().then(x =>{
     console.log(x);
 });
+
+app.listen(port, () => {
+    console.log(`listening to the port no at ${port}`);
+})
